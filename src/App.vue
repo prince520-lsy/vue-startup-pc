@@ -1,39 +1,30 @@
 <template>
   <div>
-      <button @click="nav">log(hello)</button>
-      <button @click="count++">+</button>
-      <span>{{count}}</span>
-      <button @click="count--">-</button>
-      <button @click="add(10)">加10</button>
-      <button @click="add(100)">加100</button>
-      <a href="https://www.baidu.com" @click='fn'>百度</a><br>
-      <a href="https://www.baidu.com" @click.prevent="nav">百度</a>
+  <h1>案例：折叠面板</h1>
+  <h4>芙蓉楼送辛渐</h4>
+  <p v-show="show">寒雨连江夜入屋，</p>
+  <p v-show="show">平明送客蜀山股。</p>
+  <p v-show="show">洛阳亲友如想问，</p>
+  <p v-show="show">一片冰心在玉壶。</p>
+  <button @click="show=!show">{{show==false?'显示':'收起'}}</button>
   </div>
 </template>
-
 <script>
-
 export default {
   data() {
-    return {
-     count:0
-    }
+      return {
+        show: true,
+        
+      }
   },
-  methods: {
 
-    fn(e) {
-      e.preventDefault();
-    },
-    nav() {
-      console.log('hello world');
-    },
-    add(num) {
-      this.count += num;
-    }
+methods: {
+  toggle() {
+
+  }
   }
 }
 </script>
-
 <style>
 
 </style>
