@@ -1,30 +1,46 @@
 <template>
   <div>
-  <h1>注册</h1>
-  <p>username:<input type="text" v-model.trim="username"></p>
-  <p>password:<input type="password" v-model.trim="password"></p>
-  <p>age: <input type="text" v-model.number="age"></p>
-  <button @click="login">注册</button>
+    <ul>
+      <li v-for="(i,index) in arr" :key="i.id">
+        <p>id:{{index}}</p>
+        <p>name:{{i.name}}</p>
+        <p>hobby:{{i.hobby}}</p>
+      </li>
 
+
+    </ul>
   </div>
 </template>
+
 <script>
 export default {
   data() {
-      return {
-          username: 'admin',
-          password: '123',
-          age:'12',
-      }
-  },
+    return {
+      arr: [
+        {
+          id: 1,
+          name: 'ajck',
+          hobby: 'run'
 
-methods: {
-  login() {
-          console.log(this.username,this.password,this.age);
-      }
+        },
+        {
+          id: 1,
+          name: 'ajck',
+          hobby: 'run'
+
+        },
+        {
+          id: 1,
+          name: 'ajck',
+          hobby: 'run'
+
+        },
+      ]
+    }
   }
 }
 </script>
+
 <style>
 
 </style>
