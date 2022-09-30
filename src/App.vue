@@ -1,27 +1,27 @@
 <template>
   <div>
-  <h1>案例：折叠面板</h1>
-  <h4>芙蓉楼送辛渐</h4>
-  <p v-show="show">寒雨连江夜入屋，</p>
-  <p v-show="show">平明送客蜀山股。</p>
-  <p v-show="show">洛阳亲友如想问，</p>
-  <p v-show="show">一片冰心在玉壶。</p>
-  <button @click="show=!show">{{show==false?'显示':'收起'}}</button>
+  <h1>注册</h1>
+  <p>username:<input type="text" v-model.trim="username"></p>
+  <p>password:<input type="password" v-model.trim="password"></p>
+  <p>age: <input type="text" v-model.number="age"></p>
+  <button @click="login">注册</button>
+
   </div>
 </template>
 <script>
 export default {
   data() {
       return {
-        show: true,
-        
+          username: 'admin',
+          password: '123',
+          age:'12',
       }
   },
 
 methods: {
-  toggle() {
-
-  }
+  login() {
+          console.log(this.username,this.password,this.age);
+      }
   }
 }
 </script>
