@@ -1,28 +1,32 @@
 <template>
     <div>
-    <h1>案例：折叠面板</h1>
-    <p>username:<input type="text" v-model="username">admin</p>
-    <p>password:<input type="text" v-model="password">123</p>
-    <button @click="login">登录</button>
+        <p @click="add1" :style="{color:num>3?'red':'black'}">{{num}}</p>
+        <span></span>
+        <button @click="bigred"></button>
     </div>
 </template>
+
 <script>
 export default {
     data() {
         return {
-            username: '',
-            password: '',
-            
+            num: '0',
         }
     },
+    methods: {
+        add1() {
+            this.num++;
+            if (this, num > 3) {
+                this.num.style
+            }
+        },
+        bigred() {
 
-methods: {
-    login() {
-            console.log(this.username,this.password);
         }
     }
 }
 </script>
+
 <style>
 
 </style>
