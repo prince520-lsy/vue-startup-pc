@@ -6,9 +6,9 @@
           <thead>
             <tr>
               <th scope="col">编号</th>
-              <th scope="col">科目</th>
-              <th scope="col">成绩</th>
-              <th scope="col">考试时间</th>
+              <th scope="col">资产名称</th>
+              <th scope="col">价格</th>
+              <th scope="col">创建时间</th>
               <th scope="col">操作</th>
             </tr>
           </thead>
@@ -16,7 +16,7 @@
             <tr v-for="(item, index) in list" :key="item.id">
               <th scope="row">{{item.id}}</th>
               <td>{{item.subject}}</td>
-              <td :class="{'not-pass':item.score<60}">{{item.score}}</td>
+              <td :class="{'not-pass':item.score<100}">{{item.score}}</td>
               <td>{{formatDate(item.time)}}</td>
               <td>
                 <button type="button" class="btn btn-link" @click="del(index)">删除</button>
@@ -25,8 +25,8 @@
 
             <tr class="bg-light">
               <th scope="row">统计</th>
-              <td colspan="2">总分：{{totol}}</td>
-              <td colspan="2">平均分：{{aver?aver:'0'}}</td>
+              <td colspan="2">总价：{{totol}}</td>
+              <td colspan="2">均价：{{aver?aver:'0'}}</td>
             </tr>
           </tbody>
           <tfoot style="display: none">
@@ -40,15 +40,15 @@
 
     <form class="row align-items-center" @submit.prevent="">
       <div class="col-3">
-        <input type="text" class="form-control" placeholder="请输入科目" v-model.trim="subject" />
+        <input type="text" class="form-control" placeholder="资产名称" v-model.trim="subject" />
       </div>
 
       <div class="col-3">
-        <input type="text" class="form-control" placeholder="请输入分数" v-model.number="score" />
+        <input type="text" class="form-control" placeholder="价格" v-model.number="score" />
       </div>
 
       <div class="col-3">
-        <button type="submit" class="btn btn-primary" @click="add">添加</button>
+        <button type="submit" class="btn btn-primary" @click="add">添加资产</button>
       </div>
     </form>
   </div>
@@ -69,6 +69,7 @@ export default {
         subject: this.subject,
         score: this.score,
         time: new Date()
+
       })
       this.subject = '',
         this.score = '';
@@ -76,6 +77,15 @@ export default {
     formatDate(time) {
       return moment(time).format("YYYY-MM-DD  HH:mm:ss");
     }
+  },
+  watch: {
+    list(newvalue, oldvalue) {
+      localStorage.setItem('list', JSON.stringify(newvalue))
+    }
+  },
+  created() {
+    this.list = JSON.parse(localStorage.getItem('list'))
+
   },
   data() {
     return {
